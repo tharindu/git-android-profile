@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GitProfile</string>
+
+    <!-- Strings for Profile Screen -->
+    <string name="profile">Profile</string>
+    <string name="followers">followers</string>
+    <string name="following">following</string>
+    <string name="pinned">Pinned</string>
+    <string name="view_all">View all</string>
+    <string name="top_repositories">Top repositories</string>
+    <string name="starred_repositories">Starred repositories</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#F2F2F2</color>
+    <color name="colorAccent">#FFA036</color>
+    <!-- Custom Colors used in the app -->
+    <color name="colorStars">#FFED00</color>
+    <color name="colorPrimaryLanguage">#FFA036</color>
+    <color name="colorDivider">#CCCCCC</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorBackground">#F2F2F2</color>
+</resources>
