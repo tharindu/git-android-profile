@@ -2,9 +2,24 @@
 <resources>
     <!-- Spacing for the app -->
     <dimen name="app_horizontal_margin">16dp</dimen>
+    <dimen name="app_horizontal_margin_small">8dp</dimen>
+    <dimen name="app_vertical_margin_top">24dp</dimen>
+    <dimen name="app_vertical_margin">16dp</dimen>
+    <dimen name="app_vertical_margin_large">40dp</dimen>
+    <dimen name="app_toolbar_elevation">4dp</dimen>
+    <dimen name="app_toolbar_title_elevation">0dp</dimen>
     <!-- Font sizes for the app -->
     <dimen name="font_size_navigation_title">20sp</dimen>
+    <dimen name="font_weight_navigation_title">700</dimen>
     <dimen name="font_size_large_title">32sp</dimen>
     <dimen name="font_size_medium_title">24sp</dimen>
     <dimen name="font_size_normal">16sp</dimen>
+    <!-- Profile sizes -->
+    <dimen name="avatar_size">88dp</dimen>
+    <dimen name="progressbar_size">80dp</dimen>
+    <dimen name="avatar_radius">44dp</dimen>
+    <dimen name="name_height">40dp</dimen>
+    <dimen name="textview_default_height">24dp</dimen>
+    <dimen name="header_height">32dp</dimen>
+    <dimen name="scrollview_min_height">100dp</dimen>
 </resources>
