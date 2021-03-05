@@ -62,8 +62,10 @@ public class Network {
             @Override
             public void onResponse(@NotNull Response<UserQuery.Data> response) {
                 Log.d(TAG, "Response: " + response.getData());
-                //TODO: process data and notify response listener
-                listener.onResponse(new Profile());
+                // process data and notify response listener
+                Profile profile = new Profile();
+                profile.setData(response.getData());
+                listener.onResponse(profile);
             }
 
             @Override

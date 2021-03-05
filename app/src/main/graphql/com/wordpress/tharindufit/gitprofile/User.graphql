@@ -10,6 +10,13 @@ query User {
     following {
       totalCount
     }
+    pinnedItems(last: 3, types:[REPOSITORY]) {
+      nodes {
+        ...on Repository {
+          name
+        }
+      }
+    }
     starredRepositories(last: 10){
       nodes {
         owner {
