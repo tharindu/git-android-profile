@@ -13,4 +13,7 @@
     <string name="username_label">Username</string>
     <string name="email_label">Email</string>
     <string name="count_label">0</string>
+    <string name="repo_name_label">Repository Name</string>
+    <string name="repo_desc_label">Repository Description</string>
+    <string name="language_label">Language</string>
 </resources>
