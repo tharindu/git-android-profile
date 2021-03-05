@@ -17,3 +17,6 @@ To download Github GraphQL Schema we could use following command:
 
 ## Screenshots
 
+[[/images/screenshot_1.png|Profile Screen 1]]
+
+[[/images/screenshot_2.png|Profile Screen 2]]
