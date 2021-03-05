@@ -10,6 +10,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -42,8 +43,8 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
 
     // Pinned, Top, and Starred Repositories
     private ScrollView pinnedScrollView;
-    private ScrollView topReposScrollView;
-    private ScrollView starredReposScrollView;
+    private HorizontalScrollView topReposScrollView;
+    private HorizontalScrollView starredReposScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
