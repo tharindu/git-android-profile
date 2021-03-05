@@ -11,4 +11,5 @@ MVP Architecture is used together with RxJava for reactive programming.
 We use [Dragger 2](https://dagger.dev/) for Dependency Injection. The general concept behind dependency injection is called Inversion of Control.
 
 To download Github GraphQL Schema use following command:
-./gradlew downloadApolloSchema --endpoint="https://api.github.com/graphql" --schema="app/src/main/graphql/com/wordpress/tharindufit/gitprofile/schema.json" --header="Authorization: Bearer [PERSONAL_ACCESS_TOKEN]"
+
+```./gradlew downloadApolloSchema --endpoint="https://api.github.com/graphql" --schema="app/src/main/graphql/com/wordpress/tharindufit/gitprofile/schema.json" --header="Authorization: Bearer [PERSONAL_ACCESS_TOKEN]"```
