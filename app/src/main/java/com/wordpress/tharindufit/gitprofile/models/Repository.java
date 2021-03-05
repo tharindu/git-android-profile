@@ -60,6 +60,7 @@ public class Repository {
                 } else {
                     name = s;
                 }
+                iteratingLanguage = false;
             } else if (responseField.getFieldName().equals("description")) {
                 description = s;
             } else if (responseField.getFieldName().equals("login")) {
@@ -67,7 +68,6 @@ public class Repository {
             } else if (responseField.getFieldName().equals("avatarUrl")) {
                 avatarUrl = s;
             }
-            iteratingLanguage = false;
         }
 
         @Override
@@ -105,6 +105,7 @@ public class Repository {
         public void writeObject(@NotNull ResponseField responseField, @Nullable ResponseFieldMarshaller responseFieldMarshaller) {
             Log.d(TAG, responseField.getFieldName() + " marsh value: " + responseFieldMarshaller);
             if (responseField.getFieldName().equals("owner")) {
+                iteratingLanguage = false;
                 responseFieldMarshaller.marshal(responseWriter);
             } else if (responseField.getFieldName().equals("primaryLanguage")) {
                 if (responseFieldMarshaller != null) {
