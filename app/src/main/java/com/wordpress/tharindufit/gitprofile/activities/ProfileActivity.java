@@ -44,11 +44,19 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
 
     @Override
     public void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                progressBar.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
     public void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 }
