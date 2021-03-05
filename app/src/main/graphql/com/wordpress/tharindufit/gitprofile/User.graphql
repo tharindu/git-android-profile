@@ -31,7 +31,7 @@ query User {
         }
       }
     }
-    topRepositories(last: 10, orderBy: {field:CREATED_AT, direction:ASC}){
+    topRepositories(first: 10, orderBy: {field:CREATED_AT, direction:ASC}){
       nodes {
         owner {
           login

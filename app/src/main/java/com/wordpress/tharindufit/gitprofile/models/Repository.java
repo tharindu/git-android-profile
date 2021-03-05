@@ -20,6 +20,10 @@ public class Repository {
     private String name;
     // repository description
     private String description;
+    // starred count
+    private int starred;
+    // primary language
+    private String primaryLanguage;
 
     @Inject
     public Repository() {
@@ -35,6 +39,8 @@ public class Repository {
         this.avatarUrl = node.owner().avatarUrl().toString();
         this.name = node.name();
         this.description = node.description();
+        this.starred = node.stargazerCount();
+        this.primaryLanguage = (node.primaryLanguage() != null) ? node.primaryLanguage().name() : "";
     }
 
     public void setData(UserQuery.Node2 node) {
@@ -42,6 +48,8 @@ public class Repository {
         this.avatarUrl = node.owner().avatarUrl().toString();
         this.name = node.name();
         this.description = node.description();
+        this.starred = node.stargazerCount();
+        this.primaryLanguage = (node.primaryLanguage() != null) ? node.primaryLanguage().name() : "";
     }
 
     public String getLogin() {
@@ -58,6 +66,14 @@ public class Repository {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getStarred() {
+        return starred;
+    }
+
+    public String getPrimaryLanguage() {
+        return primaryLanguage;
     }
 
 }

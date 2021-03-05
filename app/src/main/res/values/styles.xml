@@ -58,4 +58,15 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <!-- Card View Styles -->
+    <style name="PinnedCardStyle">
+        <item name="android:layout_marginHorizontal">@dimen/app_horizontal_margin_small</item>
+        <item name="android:layout_marginVertical">@dimen/app_vertical_margin_small</item>
+        <item name="android:background">@color/colorBackground</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="strokeColor">@color/colorDivider</item>
+        <item name="cornerRadius">@dimen/card_corner_radius</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
 </resources>

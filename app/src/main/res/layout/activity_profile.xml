@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context=".activities.ProfileActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackground">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -145,11 +148,12 @@
         app:layout_constraintTop_toTopOf="@+id/pinned_textview" />
 
     <ScrollView
+        android:orientation="vertical"
         android:id="@+id/pinned_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/app_vertical_margin"
-        android:minHeight="@dimen/scrollview_min_height"
+        android:minHeight="@dimen/pinned_card_min_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinned_textview"></ScrollView>
@@ -178,11 +182,13 @@
         app:layout_constraintTop_toBottomOf="@+id/pinned_scrollview" />
 
     <ScrollView
+        android:orientation="horizontal"
         android:id="@+id/top_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/app_vertical_margin"
-        android:minHeight="@dimen/scrollview_min_height"
+        android:layout_marginStart="@dimen/app_horizontal_margin_small"
+        android:minHeight="@dimen/pinned_card_min_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_textview"></ScrollView>
@@ -211,11 +217,13 @@
         app:layout_constraintTop_toBottomOf="@+id/top_scrollview" />
 
     <ScrollView
+        android:orientation="horizontal"
         android:id="@+id/starred_scrollview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/app_vertical_margin"
-        android:minHeight="@dimen/scrollview_min_height"
+        android:layout_marginStart="@dimen/app_horizontal_margin_small"
+        android:layout_marginVertical="@dimen/app_vertical_margin"
+        android:minHeight="@dimen/pinned_card_min_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/starred_textview"></ScrollView>
@@ -231,3 +239,4 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
