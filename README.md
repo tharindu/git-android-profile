@@ -11,8 +11,12 @@ To query Git Profile User data, please open `config.properties` file and set you
 
 MVP Architecture is used together with RxJava for reactive programming.
 
-We use [Dragger 2](https://dagger.dev/) for Dependency Injection. The general concept behind dependency injection is called Inversion of Control.
-
-To download Github GraphQL Schema use following command:
+To download Github GraphQL Schema we could use following command:
 
 ```./gradlew downloadApolloSchema --endpoint="https://api.github.com/graphql" --schema="app/src/main/graphql/com/wordpress/tharindufit/gitprofile/schema.json" --header="Authorization: Bearer [PERSONAL_ACCESS_TOKEN]"```
+
+## Screenshots
+
+[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|Profile1]]
+
+[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|Profile2]]
