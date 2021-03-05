@@ -10,5 +10,6 @@ public class AppConstants {
 
     // Git personal access token with permissions: public_repo, read:user, user:email
     // Ideally the value should be read from a local properties file and should not be committed.
-    public static final String GITHUB_PERSONAL_ACCESS_TOKEN = "f6c3e12940a024105e6218ed8c2fd878d3bc6daa";
+    //TODO: Replace with a valid Personal Acccess Token
+    public static final String GITHUB_PERSONAL_ACCESS_TOKEN = "[PERSONAL_ACCESS_TOKEN]";
 }
