@@ -4,6 +4,230 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".activities.ProfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolBarStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:layout_gravity="center"
+            style="@style/ToolBarTitleStyle"
+            android:id="@+id/toolbar_title" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_marginStart="@dimen/app_horizontal_margin"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:background="@color/colorDivider"
+        app:cardCornerRadius="@dimen/avatar_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <ImageView
+            android:id="@+id/avatar_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorDivider"></ImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/name_height"
+        android:layout_marginStart="@dimen/app_horizontal_margin_small"
+        android:layout_marginTop="@dimen/app_vertical_margin_large"
+        android:layout_marginEnd="@dimen/app_horizontal_margin"
+        android:text="@string/name_label"
+        style="@style/TitleTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/username_textview"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/textview_default_height"
+        android:layout_marginEnd="@dimen/app_horizontal_margin"
+        android:text="@string/username_label"
+        style="@style/DefaultTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/name_textview"
+        app:layout_constraintTop_toBottomOf="@+id/name_textview" />
+
+    <TextView
+        android:id="@+id/email_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/app_horizontal_margin"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:layout_marginEnd="@dimen/app_horizontal_margin"
+        android:text="@string/email_label"
+        style="@style/DefaultBoldTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/follower_count_textview"
+        style="@style/DefaultBoldTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/textview_default_height"
+        android:layout_marginTop="@dimen/app_horizontal_margin"
+        android:text="@string/count_label"
+        app:layout_constraintStart_toStartOf="@+id/email_textview"
+        app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+
+    <TextView
+        android:id="@+id/followers_textview"
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/textview_default_height"
+        android:layout_marginStart="@dimen/app_horizontal_margin_small"
+        android:text="@string/followers"
+        app:layout_constraintStart_toEndOf="@+id/follower_count_textview"
+        app:layout_constraintTop_toTopOf="@+id/follower_count_textview" />
+
+    <TextView
+        android:id="@+id/following_count_textview"
+        style="@style/DefaultBoldTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/textview_default_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/app_horizontal_margin"
+        android:text="@string/count_label"
+        app:layout_constraintStart_toEndOf="@+id/followers_textview"
+        app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+
+    <TextView
+        android:id="@+id/following_textview"
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/textview_default_height"
+        android:layout_marginStart="8dp"
+        android:text="@string/following"
+        app:layout_constraintStart_toEndOf="@+id/following_count_textview"
+        app:layout_constraintTop_toTopOf="@+id/follower_count_textview" />
+
+    <TextView
+        android:id="@+id/pinned_textview"
+        style="@style/HeaderLeftTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:text="@string/pinned"
+        app:layout_constraintStart_toStartOf="@+id/follower_count_textview"
+        app:layout_constraintTop_toBottomOf="@+id/follower_count_textview" />
+
+    <Button
+        android:id="@+id/pinned_viewall_textview"
+        style="@style/DefaultUnderlineTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginEnd="16dp"
+        android:gravity="bottom|right"
+        android:text="@string/view_all"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pinned_textview" />
+
+    <ScrollView
+        android:id="@+id/pinned_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_vertical_margin"
+        android:minHeight="@dimen/scrollview_min_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinned_textview"></ScrollView>
+
+    <TextView
+        android:id="@+id/top_textview"
+        style="@style/HeaderLeftTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:text="@string/top_repositories"
+        app:layout_constraintStart_toStartOf="@+id/follower_count_textview"
+        app:layout_constraintTop_toBottomOf="@+id/pinned_scrollview" />
+
+    <Button
+        android:id="@+id/top_viewall_textview"
+        style="@style/DefaultUnderlineTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginEnd="@dimen/app_horizontal_margin"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:gravity="bottom|right"
+        android:text="@string/view_all"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinned_scrollview" />
+
+    <ScrollView
+        android:id="@+id/top_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_vertical_margin"
+        android:minHeight="@dimen/scrollview_min_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_textview"></ScrollView>
+
+    <TextView
+        android:id="@+id/starred_textview"
+        style="@style/HeaderLeftTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:text="@string/starred_repositories"
+        app:layout_constraintStart_toStartOf="@+id/follower_count_textview"
+        app:layout_constraintTop_toBottomOf="@+id/top_scrollview" />
+
+    <Button
+        android:id="@+id/starred_viewall_textview"
+        style="@style/DefaultUnderlineTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginEnd="@dimen/app_horizontal_margin"
+        android:layout_marginTop="@dimen/app_vertical_margin_top"
+        android:gravity="bottom|right"
+        android:text="@string/view_all"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_scrollview" />
+
+    <ScrollView
+        android:id="@+id/starred_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_vertical_margin"
+        android:minHeight="@dimen/scrollview_min_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/starred_textview"></ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/progressbar_size"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

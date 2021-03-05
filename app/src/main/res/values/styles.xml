@@ -1,10 +1,61 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="ToolBarStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryText</item>
+        <item name="actionMenuTextColor">@color/colorSecondaryText</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">@dimen/app_toolbar_elevation</item>
+    </style>
+
+    <!-- ToolBar Title -->
+    <style name="ToolBarTitleStyle" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">@dimen/app_toolbar_title_elevation</item>
+        <item name="fontFamily">@font/source_sans_pro_semibold</item>
+        <item name="android:textSize">@dimen/font_size_navigation_title</item>
+        <item name="fontWeight">@dimen/font_weight_navigation_title</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="TitleTextStyle">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">@dimen/font_size_large_title</item>
+    </style>
+
+    <style name="DefaultTextStyle">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textSize">@dimen/font_size_normal</item>
+    </style>
+
+    <style name="DefaultBoldTextStyle">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">@dimen/font_size_normal</item>
+    </style>
+
+    <style name="HeaderLeftTextStyle">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">@dimen/font_size_medium_title</item>
+    </style>
+
+    <style name="DefaultUnderlineTextStyle">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="fontFamily">@font/source_sans_pro_semibold</item>
+        <item name="android:textSize">@dimen/font_size_normal</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 </resources>

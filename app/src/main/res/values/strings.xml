@@ -6,7 +6,11 @@
     <string name="followers">followers</string>
     <string name="following">following</string>
     <string name="pinned">Pinned</string>
-    <string name="view_all">View all</string>
+    <string name="view_all"><u>View all</u></string>
     <string name="top_repositories">Top repositories</string>
     <string name="starred_repositories">Starred repositories</string>
+    <string name="name_label">Full Name</string>
+    <string name="username_label">Username</string>
+    <string name="email_label">Email</string>
+    <string name="count_label">0</string>
 </resources>

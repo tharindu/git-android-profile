@@ -1,0 +1,42 @@
+query User {
+  viewer {
+    avatarUrl
+    name
+    login
+    email
+    followers {
+      totalCount
+    }
+    following {
+      totalCount
+    }
+    starredRepositories(last: 10){
+      nodes {
+        owner {
+          login
+          avatarUrl
+        }
+        name
+        description
+        stargazerCount
+        primaryLanguage {
+          name
+        }
+      }
+    }
+    topRepositories(last: 10, orderBy: {field:CREATED_AT, direction:ASC}){
+      nodes {
+        owner {
+          login
+          avatarUrl
+        }
+        name
+        description
+        stargazerCount
+        primaryLanguage {
+          name
+        }
+      }
+    }
+  }
+}
