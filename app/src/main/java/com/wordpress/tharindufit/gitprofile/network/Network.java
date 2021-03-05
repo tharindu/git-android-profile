@@ -1,5 +1,6 @@
 package com.wordpress.tharindufit.gitprofile.network;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.apollographql.apollo.ApolloCall;
@@ -7,16 +8,13 @@ import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.apollographql.apollo.request.RequestHeaders;
+import com.wordpress.tharindufit.gitprofile.R;
 import com.wordpress.tharindufit.gitprofile.UserQuery;
 import com.wordpress.tharindufit.gitprofile.configs.AppConstants;
 import com.wordpress.tharindufit.gitprofile.interfaces.ResponseListener;
 import com.wordpress.tharindufit.gitprofile.models.Profile;
-import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
 
 import org.jetbrains.annotations.NotNull;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 
 /**
  * Handles GraphQL API Calls.
@@ -48,7 +46,7 @@ public class Network {
     /**
      * Queries Github user profile using GraphQL
      */
-    public void queryGithubProfile(final ResponseListener listener) {
+    public void queryGithubProfile(final Context context, final ResponseListener listener) {
 
         ApolloClient apoloClient = ApolloClient.builder()
                 .serverUrl(AppConstants.GITHUB_GRAPHQL_API_URL)
@@ -69,9 +67,13 @@ public class Network {
 
             @Override
             public void onFailure(@NotNull ApolloException e) {
-                Log.e(TAG, "ERROR: " + e);
+                Log.e(TAG, "ERROR: " + e + " message: " + e.getMessage());
                 // return error message to response listener
-                listener.onFailure(e.getMessage());
+                if (e.getMessage().trim().equals("HTTP 401")) {
+                    listener.onFailure(context.getString(R.string.error_in_github_access_token));
+                } else {
+                    listener.onFailure(e.getMessage());
+                }
             }
         });
     }

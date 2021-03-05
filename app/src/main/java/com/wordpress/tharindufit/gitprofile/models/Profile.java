@@ -3,10 +3,8 @@ package com.wordpress.tharindufit.gitprofile.models;
 import com.wordpress.tharindufit.gitprofile.UserQuery;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

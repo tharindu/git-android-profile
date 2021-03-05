@@ -6,7 +6,6 @@ import com.apollographql.apollo.api.ResponseField;
 import com.apollographql.apollo.api.internal.ResponseFieldMarshaller;
 import com.apollographql.apollo.api.internal.ResponseWriter;
 import com.wordpress.tharindufit.gitprofile.UserQuery;
-import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,17 +54,17 @@ public class Repository {
         @Override
         public void writeString(@NotNull ResponseField responseField, @Nullable String s) {
             Log.d(TAG, responseField.getFieldName() + " " + responseField.getType() + " string value: " + s);
-            if (responseField.getFieldName() == "name") {
+            if (responseField.getFieldName().equals("name")) {
                 if (iteratingLanguage) {
                     primaryLanguage = s;
                 } else {
                     name = s;
                 }
-            } else if (responseField.getFieldName() == "description") {
+            } else if (responseField.getFieldName().equals("description")) {
                 description = s;
-            } else if (responseField.getFieldName() == "login") {
+            } else if (responseField.getFieldName().equals("login")) {
                 login = s;
-            } else if (responseField.getFieldName() == "avatarUrl") {
+            } else if (responseField.getFieldName().equals("avatarUrl")) {
                 avatarUrl = s;
             }
             iteratingLanguage = false;
@@ -74,7 +73,7 @@ public class Repository {
         @Override
         public void writeInt(@NotNull ResponseField responseField, @Nullable Integer integer) {
             Log.d(TAG, responseField.getFieldName() + " int value: " + integer);
-            if (responseField.getFieldName() == "stargazerCount") {
+            if (responseField.getFieldName().equals("stargazerCount")) {
                 starred = integer;
             }
         }
@@ -97,7 +96,7 @@ public class Repository {
         @Override
         public void writeCustom(@NotNull ResponseField.CustomTypeField customTypeField, @Nullable Object o) {
             Log.d(TAG, customTypeField.getFieldName() + " obj value: " + o);
-            if (customTypeField.getFieldName() == "avatarUrl") {
+            if (customTypeField.getFieldName().equals("avatarUrl")) {
                 avatarUrl = o.toString();
             }
         }
@@ -105,9 +104,9 @@ public class Repository {
         @Override
         public void writeObject(@NotNull ResponseField responseField, @Nullable ResponseFieldMarshaller responseFieldMarshaller) {
             Log.d(TAG, responseField.getFieldName() + " marsh value: " + responseFieldMarshaller);
-            if (responseField.getFieldName() == "owner") {
+            if (responseField.getFieldName().equals("owner")) {
                 responseFieldMarshaller.marshal(responseWriter);
-            } else if (responseField.getFieldName() == "primaryLanguage") {
+            } else if (responseField.getFieldName().equals("primaryLanguage")) {
                 if (responseFieldMarshaller != null) {
                     iteratingLanguage = true;
                     responseFieldMarshaller.marshal(responseWriter);

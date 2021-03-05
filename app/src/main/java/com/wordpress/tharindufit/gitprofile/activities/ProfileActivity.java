@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.ActionBar;
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -23,6 +21,7 @@ import com.wordpress.tharindufit.gitprofile.R;
 import com.wordpress.tharindufit.gitprofile.models.Profile;
 import com.wordpress.tharindufit.gitprofile.models.Repository;
 import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
+import com.wordpress.tharindufit.gitprofile.utils.Utils;
 
 /**
  * Main Activity class displays Git Profile User Interface.
@@ -59,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
         initUIElements();
 
         // setup presenter
-        this.presenter = new ProfileActivityPresenter(this);
+        this.presenter = new ProfileActivityPresenter(this,this);
     }
 
     // Initializes UI elements
@@ -157,6 +156,15 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
         runOnUiThread(new Runnable() {
             public void run() {
                 progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
+    public void showError(final String message) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Utils.showAlertDialog(ProfileActivity.this, getString(R.string.error), message);
             }
         });
     }

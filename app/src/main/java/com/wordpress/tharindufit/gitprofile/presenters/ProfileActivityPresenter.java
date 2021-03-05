@@ -1,5 +1,7 @@
 package com.wordpress.tharindufit.gitprofile.presenters;
 
+import android.content.Context;
+
 import com.wordpress.tharindufit.gitprofile.interfaces.ResponseListener;
 import com.wordpress.tharindufit.gitprofile.models.Profile;
 import com.wordpress.tharindufit.gitprofile.network.Network;
@@ -20,12 +22,12 @@ public class ProfileActivityPresenter {
      * Constructs Presenter for Profile activity
      * @param view
      */
-    public ProfileActivityPresenter(final View view) {
+    public ProfileActivityPresenter(final View view, final Context context) {
         this.profile = new Profile();
         this.view = view;
         view.showProgressBar();
         // Query github profile
-        Network.getInstance().queryGithubProfile(new ResponseListener() {
+        Network.getInstance().queryGithubProfile(context, new ResponseListener() {
             @Override
             public void onResponse(Profile data) {
                 // API call successfully completed
@@ -36,6 +38,7 @@ public class ProfileActivityPresenter {
             @Override
             public void onFailure(String message) {
                 // API call failed to execute
+                view.showError(message);
                 view.hideProgressBar();
             }
         });
@@ -48,5 +51,6 @@ public class ProfileActivityPresenter {
         void updateUserInterface(Profile profile);
         void showProgressBar();
         void hideProgressBar();
+        void showError(String message);
     }
 }
