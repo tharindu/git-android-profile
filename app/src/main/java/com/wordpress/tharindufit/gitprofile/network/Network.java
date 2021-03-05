@@ -26,7 +26,6 @@ public class Network {
     private static final String TAG = Network.class.toString();
 
     private static Network instance = null;
-    private static String AUTH_HEADER = "Bearer " + AppConstants.GITHUB_PERSONAL_ACCESS_TOKEN;
 
     /**
      * private constructor to avoid creating new objects
@@ -56,14 +55,16 @@ public class Network {
                 .build();
         apoloClient.query(new UserQuery())
                 .requestHeaders(RequestHeaders.builder()
-                        .addHeader("Authorization", AUTH_HEADER)
+                        .addHeader("Authorization", AppConstants.GITHUB_AUTH_HEADER)
                         .build())
                 .enqueue(new ApolloCall.Callback<UserQuery.Data>() {
             @Override
             public void onResponse(@NotNull Response<UserQuery.Data> response) {
                 Log.d(TAG, "Response: " + response.getData());
-                //TODO: process data and notify response listener
-                listener.onResponse(new Profile());
+                // process data and notify response listener
+                Profile profile = new Profile();
+                profile.setData(response.getData());
+                listener.onResponse(profile);
             }
 
             @Override

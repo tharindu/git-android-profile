@@ -4,6 +4,9 @@
 *.ap_
 *.aab
 
+# Ignore committing personal access token
+config.properties
+
 # Files for the ART/Dalvik VM
 *.dex
 

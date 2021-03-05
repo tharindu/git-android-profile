@@ -6,9 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.wordpress.tharindufit.gitprofile.R;
 import com.wordpress.tharindufit.gitprofile.models.Profile;
 import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
@@ -19,7 +22,15 @@ import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
 public class ProfileActivity extends AppCompatActivity implements ProfileActivityPresenter.View {
 
     private ProfileActivityPresenter presenter;
+
     private ProgressBar progressBar;
+
+    private ImageView avatarImageView;
+    private TextView nameTextView;
+    private TextView usernameTextView;
+    private TextView emailTextView;
+    private TextView followersCountTextView;
+    private TextView followingCountTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +42,37 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        this.progressBar = findViewById(R.id.progress_bar);
+        initUIElements();
 
         // setup presenter
         this.presenter = new ProfileActivityPresenter(this);
     }
 
-    @Override
-    public void updateUserInterface(Profile profile) {
+    // Initializes UI elements
+    private void initUIElements() {
+        this.progressBar = findViewById(R.id.progress_bar);
+        this.avatarImageView = findViewById(R.id.avatar_imageview);
 
+        this.nameTextView = findViewById(R.id.name_textview);
+        this.usernameTextView = findViewById(R.id.username_textview);
+        this.emailTextView = findViewById(R.id.email_textview);
+        this.followersCountTextView = findViewById(R.id.follower_count_textview);
+        this.followingCountTextView = findViewById(R.id.following_count_textview);
+    }
+
+    @Override
+    public void updateUserInterface(final Profile profile) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                // user profile basic information
+                Picasso.get().load(profile.getAvatarUrl()).into(avatarImageView);
+                nameTextView.setText(profile.getName());
+                usernameTextView.setText(profile.getLogin());
+                emailTextView.setText(profile.getEmail());
+                followersCountTextView.setText(String.valueOf(profile.getFollowers()));
+                followingCountTextView.setText(String.valueOf(profile.getFollowing()));
+            }
+        });
     }
 
     @Override

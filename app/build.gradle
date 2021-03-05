@@ -5,15 +5,23 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    // Load values from keystore.properties file
+    def keystorePropertiesFile = rootProject.file("config.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
     defaultConfig {
         applicationId "com.wordpress.tharindufit.gitprofile"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 2
         versionName "0.1.0"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Create BuildConfig variables
+        buildConfigField "String", "GIT_PERSONAL_ACCESS_TOKEN", keystoreProperties["GIT_PERSONAL_ACCESS_TOKEN"]
     }
 
     buildTypes {
@@ -43,6 +51,8 @@ dependencies {
     implementation 'io.reactivex:rxandroid:1.2.1'
     // Card view
     implementation "androidx.cardview:cardview:1.0.0"
+    // Network Images
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 
 configurations.all {
