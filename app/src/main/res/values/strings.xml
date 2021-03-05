@@ -16,4 +16,7 @@
     <string name="repo_name_label">Repository Name</string>
     <string name="repo_desc_label">Repository Description</string>
     <string name="language_label">Language</string>
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+    <string name="error_in_github_access_token">Please set Github Personal Access Token in config.properties file.</string>
 </resources>
