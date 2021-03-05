@@ -3,12 +3,14 @@ package com.wordpress.tharindufit.gitprofile.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -88,32 +90,42 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
                 followersCountTextView.setText(String.valueOf(profile.getFollowers()));
                 followingCountTextView.setText(String.valueOf(profile.getFollowing()));
                 // Pinned Repositories
+                LinearLayout pinnedLL = new LinearLayout(nameTextView.getContext());
+                pinnedLL.setOrientation(LinearLayout.VERTICAL);
+                pinnedLL.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                for (Repository repo : profile.getPinnedRepos()) {
+                    pinnedLL.addView(createRepoLayout(repo, true));
+                }
+                pinnedScrollView.addView(pinnedLL);
+
                 // Top Repositories
                 LinearLayout topLL = new LinearLayout(nameTextView.getContext());
                 topLL.setOrientation(LinearLayout.HORIZONTAL);
+                topLL.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 for (Repository repo : profile.getTopRepos()) {
-                    topLL.addView(createRepoLayout(repo));
+                    topLL.addView(createRepoLayout(repo, false));
                 }
                 topReposScrollView.addView(topLL);
 
                 // Starred Repositories
                 LinearLayout starredLL = new LinearLayout(nameTextView.getContext());
                 starredLL.setOrientation(LinearLayout.HORIZONTAL);
+                starredLL.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 for (Repository repo : profile.getStarredRepos()) {
-                    starredLL.addView(createRepoLayout(repo));
+                    starredLL.addView(createRepoLayout(repo, false));
                 }
                 starredReposScrollView.addView(starredLL);
             }
         });
     }
 
-    private View createRepoLayout(Repository repo) {
+    private View createRepoLayout(Repository repo, boolean fullWidth) {
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.repo_cardview, null);
         int width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 220, getResources().getDisplayMetrics());
         int height = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 164, getResources().getDisplayMetrics());
-        v.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        v.setLayoutParams(new LinearLayout.LayoutParams(fullWidth ? ActionBar.LayoutParams.MATCH_PARENT : width, height));
 
         ImageView ownerImageView = v.findViewById(R.id.owner_imageview);
         TextView ownerTextView = v.findViewById(R.id.owner_textview);

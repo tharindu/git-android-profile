@@ -1,16 +1,31 @@
 package com.wordpress.tharindufit.gitprofile.models;
 
+import android.util.Log;
+
+import com.apollographql.apollo.api.ResponseField;
+import com.apollographql.apollo.api.internal.ResponseFieldMarshaller;
+import com.apollographql.apollo.api.internal.ResponseWriter;
 import com.wordpress.tharindufit.gitprofile.UserQuery;
+import com.wordpress.tharindufit.gitprofile.presenters.ProfileActivityPresenter;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import dagger.Provides;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
 
 /**
  * Repository model objects represent user's git repos.
  */
 public class Repository {
+
+    private static final String TAG = Repository.class.toString();
 
     // owner login username
     private String login;
@@ -31,8 +46,90 @@ public class Repository {
     }
 
     public void setData(UserQuery.Node node) {
-
+        node.marshaller().marshal(responseWriter);
     }
+
+    private boolean iteratingLanguage = false;
+
+    private  ResponseWriter responseWriter = new ResponseWriter() {
+        @Override
+        public void writeString(@NotNull ResponseField responseField, @Nullable String s) {
+            Log.d(TAG, responseField.getFieldName() + " " + responseField.getType() + " string value: " + s);
+            if (responseField.getFieldName() == "name") {
+                if (iteratingLanguage) {
+                    primaryLanguage = s;
+                } else {
+                    name = s;
+                }
+            } else if (responseField.getFieldName() == "description") {
+                description = s;
+            } else if (responseField.getFieldName() == "login") {
+                login = s;
+            } else if (responseField.getFieldName() == "avatarUrl") {
+                avatarUrl = s;
+            }
+            iteratingLanguage = false;
+        }
+
+        @Override
+        public void writeInt(@NotNull ResponseField responseField, @Nullable Integer integer) {
+            Log.d(TAG, responseField.getFieldName() + " int value: " + integer);
+            if (responseField.getFieldName() == "stargazerCount") {
+                starred = integer;
+            }
+        }
+
+        @Override
+        public void writeLong(@NotNull ResponseField responseField, @Nullable Long aLong) {
+            Log.d(TAG, responseField.getFieldName() + " long value: " + aLong);
+        }
+
+        @Override
+        public void writeDouble(@NotNull ResponseField responseField, @Nullable Double aDouble) {
+            Log.d(TAG, responseField.getFieldName() + " double value: " + aDouble);
+        }
+
+        @Override
+        public void writeBoolean(@NotNull ResponseField responseField, @Nullable Boolean aBoolean) {
+            Log.d(TAG, responseField.getFieldName() + " int value: " + aBoolean);
+        }
+
+        @Override
+        public void writeCustom(@NotNull ResponseField.CustomTypeField customTypeField, @Nullable Object o) {
+            Log.d(TAG, customTypeField.getFieldName() + " obj value: " + o);
+            if (customTypeField.getFieldName() == "avatarUrl") {
+                avatarUrl = o.toString();
+            }
+        }
+
+        @Override
+        public void writeObject(@NotNull ResponseField responseField, @Nullable ResponseFieldMarshaller responseFieldMarshaller) {
+            Log.d(TAG, responseField.getFieldName() + " marsh value: " + responseFieldMarshaller);
+            if (responseField.getFieldName() == "owner") {
+                responseFieldMarshaller.marshal(responseWriter);
+            } else if (responseField.getFieldName() == "primaryLanguage") {
+                if (responseFieldMarshaller != null) {
+                    iteratingLanguage = true;
+                    responseFieldMarshaller.marshal(responseWriter);
+                }
+            }
+        }
+
+        @Override
+        public void writeFragment(@Nullable ResponseFieldMarshaller responseFieldMarshaller) {
+
+        }
+
+        @Override
+        public <T> void writeList(@NotNull ResponseField responseField, @Nullable List<? extends T> list, @NotNull ListWriter<T> listWriter) {
+            Log.d(TAG, responseField.getFieldName() + " list value: " + list);
+        }
+
+        @Override
+        public <T> void writeList(@NotNull ResponseField responseField, @Nullable List<? extends T> list, @NotNull Function2<? super List<? extends T>, ? super ListItemWriter, Unit> function2) {
+
+        }
+    };
 
     public void setData(UserQuery.Node1 node) {
         this.login = node.owner().login();

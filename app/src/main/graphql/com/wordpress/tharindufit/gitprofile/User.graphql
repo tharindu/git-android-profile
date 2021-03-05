@@ -13,7 +13,16 @@ query User {
     pinnedItems(last: 3, types:[REPOSITORY]) {
       nodes {
         ...on Repository {
+          owner {
+            login
+            avatarUrl
+          }
           name
+          description
+          stargazerCount
+          primaryLanguage {
+            name
+          }
         }
       }
     }

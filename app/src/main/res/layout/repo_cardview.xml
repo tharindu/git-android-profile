@@ -28,6 +28,7 @@
                 android:layout_height="@dimen/card_top_section_height">
                 <androidx.cardview.widget.CardView
                     card_view:cardCornerRadius="@dimen/small_avatar_cornder_radius"
+                    card_view:cardElevation="0dp"
                     android:layout_width="@dimen/small_avatar_size"
                     android:layout_height="@dimen/small_avatar_size">
                     <ImageView
