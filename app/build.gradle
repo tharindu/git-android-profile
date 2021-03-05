@@ -5,6 +5,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    // Load values from keystore.properties file
+    def keystorePropertiesFile = rootProject.file("config.properties")
+    def keystoreProperties = new Properties()
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
     defaultConfig {
         applicationId "com.wordpress.tharindufit.gitprofile"
         minSdkVersion 26
@@ -14,6 +19,9 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Create BuildConfig variables
+        buildConfigField "String", "GIT_PERSONAL_ACCESS_TOKEN", keystoreProperties["GIT_PERSONAL_ACCESS_TOKEN"]
     }
 
     buildTypes {
