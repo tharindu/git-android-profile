@@ -17,6 +17,6 @@ To download Github GraphQL Schema we could use following command:
 
 ## Screenshots
 
-[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|alt=Profile Screen 1]]
+[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|Profile1]]
 
-[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|alt=Profile Screen 2]]
+[[https://github.com/tharindu/git-android-profile/blob/main/images/screen_1.png|Profile2]]
